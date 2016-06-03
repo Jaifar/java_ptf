@@ -8,7 +8,7 @@ import org.junit.Test;
 public class PointTests {
   @Test
   public void testArea(){
-    Point d = new distance (7);
+    Point d = new Point (7);
 
     assert d.area() == 5.6;
 
