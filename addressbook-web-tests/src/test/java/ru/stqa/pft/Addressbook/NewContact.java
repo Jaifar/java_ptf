@@ -29,6 +29,7 @@ public class NewContact {
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).sendKeys("\\undefined");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+        //login
         wd.findElement(By.linkText("home")).click();
         wd.findElement(By.name("add")).click();
         wd.findElement(By.linkText("home")).click();
