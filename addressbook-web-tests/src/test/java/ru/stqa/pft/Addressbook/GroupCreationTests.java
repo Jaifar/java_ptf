@@ -51,7 +51,8 @@ class groupCreationTests {
         wd.findElement(By.name("submit")).click();
         wd.findElement(By.linkText("groups")).click();
     }
-    
+
+
     @AfterMethod
     public void tearDown() {
         wd.quit();
