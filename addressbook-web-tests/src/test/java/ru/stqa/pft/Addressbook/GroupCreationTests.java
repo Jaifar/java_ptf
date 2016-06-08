@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import static org.openqa.selenium.OutputType.*;
 
-public class groupCreationTests {
+class groupCreationTests {
     FirefoxDriver wd;
     
     @BeforeMethod

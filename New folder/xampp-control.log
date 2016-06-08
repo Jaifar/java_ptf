@@ -348,3 +348,28 @@
 4:37:52 PM  [main] 	Deinitializing Modules
 4:37:52 PM  [main] 	Deinitializing Control Panel
 
+4:47:23 PM  [main] 	Initializing Control Panel
+4:47:23 PM  [main] 	Windows Version:  Home  64-bit
+4:47:23 PM  [main] 	XAMPP Version: 5.6.15
+4:47:23 PM  [main] 	Control Panel Version: 3.2.2  [ Compiled: Nov 12th 2015 ]
+4:47:23 PM  [main] 	You are not running with administrator rights! This will work for
+4:47:23 PM  [main] 	most application stuff but whenever you do something with services
+4:47:23 PM  [main] 	there will be a security dialogue or things will break! So think 
+4:47:23 PM  [main] 	about running this application with administrator rights!
+4:47:23 PM  [main] 	XAMPP Installation Directory: "c:\devel\java_ptf\new folder\"
+4:47:23 PM  [main] 	WARNING: Your install directory contains spaces.  This may break programs/scripts
+4:47:23 PM  [main] 	Checking for prerequisites
+4:47:39 PM  [main] 	All prerequisites found
+4:47:39 PM  [main] 	Initializing Modules
+4:47:39 PM  [main] 	The FileZilla module is disabled
+4:47:39 PM  [main] 	The Mercury module is disabled
+4:47:39 PM  [main] 	The Tomcat module is disabled
+4:47:39 PM  [main] 	Starting Check-Timer
+4:47:39 PM  [main] 	Control Panel Ready
+4:47:50 PM  [Apache] 	Attempting to start Apache app...
+4:47:50 PM  [Apache] 	Status change detected: running
+4:47:56 PM  [mysql] 	Attempting to start MySQL app...
+4:47:57 PM  [mysql] 	Status change detected: running
+10:07:22 PM  [main] 	Deinitializing Modules
+10:07:22 PM  [main] 	Deinitializing Control Panel
+
