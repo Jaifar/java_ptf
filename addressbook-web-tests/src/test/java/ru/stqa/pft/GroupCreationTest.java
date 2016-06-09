@@ -1,4 +1,4 @@
-package ru.stqa.pft.Addressbook;
+package ru.stqa.pft;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -14,14 +14,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import static org.openqa.selenium.OutputType.*;
 
-class groupCreationTests {
+public class GroupCreationTest {
     FirefoxDriver wd;
     
     @BeforeMethod
     public void setUp() throws Exception {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        wd.get("http://localhost/addressbook/");
+    }
+    
+    @Test
+    public void GroupCreationTest() {
+        wd.get("http://localhost/addressbook/group.php");
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).sendKeys("\\undefined");
         wd.findElement(By.name("user")).click();
@@ -32,27 +36,26 @@ class groupCreationTests {
         wd.findElement(By.name("pass")).clear();
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-    }
-    
-    @Test
-    public void GroupCreationTests() {
-
-        wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.name("new")).click();
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
         wd.findElement(By.name("group_name")).sendKeys("Test1");
+        wd.findElement(By.xpath("//div[@id='content']/form")).click();
         wd.findElement(By.name("group_header")).click();
         wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys("Test1");
+        wd.findElement(By.name("group_header")).sendKeys("Test2");
         wd.findElement(By.name("group_footer")).click();
         wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys("Test1");
+        wd.findElement(By.name("group_footer")).sendKeys("Test3");
         wd.findElement(By.name("submit")).click();
         wd.findElement(By.linkText("groups")).click();
+        wd.findElement(By.linkText("Logout")).click();
+        wd.findElement(By.name("pass")).click();
+        wd.findElement(By.name("pass")).sendKeys("\\undefined");
+        wd.findElement(By.name("user")).click();
+        wd.findElement(By.name("user")).sendKeys("\\undefined");
     }
-
-
+    
     @AfterMethod
     public void tearDown() {
         wd.quit();
