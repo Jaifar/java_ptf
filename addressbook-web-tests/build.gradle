@@ -5,7 +5,8 @@ repositories {
 }
 
 dependencies{
-    compile 'org.echocat.jomon.spring:testing:1.6.3'
+    compile 'org.testng:testng:6.9.10'
+
     compile 'org.seleniumhq.selenium:selenium-java:2.53.0'
 
 
