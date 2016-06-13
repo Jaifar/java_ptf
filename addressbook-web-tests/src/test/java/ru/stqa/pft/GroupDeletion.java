@@ -39,7 +39,7 @@ public class GroupDeletion extends TestBase{
         if (!wd.findElement(By.name("selected[]")).isSelected()) {
             wd.findElement(By.name("selected[]")).click();
         }
-        wd.findElement(By.name("delete")).click();
+        deleteSelectedGroups();
         wd.findElement(By.linkText("group page")).click();
         wd.findElement(By.linkText("Logout")).click();
         wd.findElement(By.name("pass")).click();
