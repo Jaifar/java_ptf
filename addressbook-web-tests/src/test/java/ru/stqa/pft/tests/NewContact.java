@@ -1,4 +1,4 @@
-package ru.stqa.pft;
+package ru.stqa.pft.tests;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
