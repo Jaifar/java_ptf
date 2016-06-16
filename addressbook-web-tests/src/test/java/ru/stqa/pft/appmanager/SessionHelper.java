@@ -4,27 +4,25 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
- * Created by Owner on 6/14/2016.
+ * Created by Owner on 6/16/2016.
  */
-public class SessionHelper extends HelperBase   {
-  private FirefoxDriver wd;
+public class SessionHelper  extends HelperBase {
+
 
   public SessionHelper(FirefoxDriver wd) {
+
     super(wd);
   }
-
-
   public void Login(String username, String password) {
     type(By.name("user"), username);
     type(By.name("pass"), password);
 
-   click(By.xpath("//form[@id='LoginForm']/input[3]"));
-  }
+    wd.findElement(By.name("pass")).sendKeys("\\undefined");
+
+    wd.findElement(By.cssSelector("label")).click();
 
 
-  public void login(String admin, String secret) {
+    click(By.xpath("//form[@id='LoginForm']/input[3]"));
   }
+
 }
-
-
-

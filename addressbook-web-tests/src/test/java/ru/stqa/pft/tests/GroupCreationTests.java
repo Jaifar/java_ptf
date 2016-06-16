@@ -2,13 +2,15 @@ package ru.stqa.pft.tests;
 
 
 import org.testng.annotations.Test;
+import ru.stqa.pft.TestBase;
 import ru.stqa.pft.model.GroupData;
 
 
 public class GroupCreationTests extends TestBase {
 
   @Test
-  public GroupCreationTests() {
+  public void testGroupCreation() {
+
 
     app.getNavigationHelper().goToGroupPage();
     app.getGroupHelper().initGroupCreation();

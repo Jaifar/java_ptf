@@ -1,14 +1,14 @@
 package ru.stqa.pft.appmanager;
 
+import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.model.GroupData;
 
 /**
- * Created by Owner on 6/14/2016.
+ * Created by Owner on 6/16/2016.
  */
 public class GroupHelper extends HelperBase {
-
 
   public GroupHelper(FirefoxDriver wd) {
     super(wd);
@@ -28,17 +28,12 @@ public class GroupHelper extends HelperBase {
   }
 
   public void fillGroupForm(GroupData groupData) {
-
     type(By.name("group_name"), groupData.getName());
-    type(By.name("group_header"), groupData.getHeader());
-    type(By.name("group_footer"), groupData.getHeader());
-
-  }
-
-  private void type(By locator, By text) {
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
-    click(locator);
+    wd.findElement(By.name("group_header")).clear();
+    wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
+    click(By.name("group_footer"));
+    wd.findElement(By.name("group_footer")).clear();
+    wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
   }
 
   public void initGroupCreation() {
@@ -47,9 +42,5 @@ public class GroupHelper extends HelperBase {
 
   public void deleteSelectedGroups() {
     click(By.name("delete"));
-  }
-
-  public void selectGroup() {
-    click(By.name("selected[]"));
   }
 }
