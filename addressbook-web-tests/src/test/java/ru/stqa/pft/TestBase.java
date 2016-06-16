@@ -9,7 +9,9 @@ import ru.stqa.pft.appmanager.ApplicationManager;
  */
 public class TestBase {
 
-  public final ApplicationManager app = new ApplicationManager();
+  protected final ApplicationManager app = new ApplicationManager();
+
+
 
   @BeforeMethod
   public void setUp() throws Exception {
@@ -21,4 +23,6 @@ public class TestBase {
     app.stop();
   }
 
-}
+
+  }
+
