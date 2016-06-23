@@ -2,16 +2,15 @@ package ru.stqa.pft.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
- * Created by Owner on 6/16/2016.
+ * Created by Owner on 6/23/2016.
  */
 public class HelperBase {
-  protected WebDriver wd;
+  protected FirefoxDriver wd;
 
-  public HelperBase(WebDriver wd) {
+  public HelperBase(FirefoxDriver wd) {
     this.wd = wd;
   }
 
@@ -20,16 +19,13 @@ public class HelperBase {
   }
 
   protected void type(By locator, String text) {
-
     click(locator);
-    if (text != null) {
-      wd.findElement(locator).clear();
-      wd.findElement(locator).sendKeys(text);
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
 
 
-    }
+  }
 
-    }
   public  boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
@@ -37,5 +33,9 @@ public class HelperBase {
     } catch (NoAlertPresentException e) {
       return false;
     }
+
   }
 }
+
+
+
