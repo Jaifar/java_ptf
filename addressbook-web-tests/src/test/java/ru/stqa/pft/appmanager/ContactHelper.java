@@ -9,7 +9,7 @@ import ru.stqa.pft.tests.TestBase;
 /**
  * Created by Owner on 6/28/2016.
  */
-public class ContactHelper {
+public class ContactHelper extends HelperBase{
   WebDriver wd;
 
   public ContactHelper(FirefoxDriver wd) {

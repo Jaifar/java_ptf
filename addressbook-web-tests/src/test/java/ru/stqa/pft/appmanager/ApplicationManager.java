@@ -16,8 +16,8 @@ public class ApplicationManager  extends ContactHelper {
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
-  private String browser;
-  private ContactHelper contactHelper;
+  public String browser;
+  public ContactHelper contactHelper;
 
   public ApplicationManager(String browser) {
     super();
