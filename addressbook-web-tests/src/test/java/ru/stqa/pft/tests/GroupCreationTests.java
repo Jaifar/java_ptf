@@ -1,7 +1,7 @@
 package ru.stqa.pft.tests;
 
 import org.testng.annotations.Test;
-import ru.stqa.pft.appmanager.model.GroupData;
+import ru.stqa.pft.model.GroupData;
 
 public class GroupCreationTests extends TestBase {
 

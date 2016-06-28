@@ -4,10 +4,11 @@ import org.testng.annotations.Test;
 
 public class GroupDeletionTests2 extends TestBase{
 
-    
 
-    
-    @Test
+
+
+
+  @Test
     public void groupDeletionTests() {
 
        app.getNavigationHelper().gotoGroupPage();

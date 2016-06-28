@@ -1,34 +1,38 @@
 package ru.stqa.pft.tests;
 
-public class newContactData {
+public class ContactData {
   private final String firstname;
   private final String middlename;
   private final String lastname;
   private final String nickname;
-  private final String title;
   private final String company;
   private final String address;
   private final String home;
   private final String mobile;
   private final String work;
+  private final String fax;
   private final String email;
   private final String byear;
   private final String ayear;
+  private final String address2;
+  private final String notes;
 
-  public newContactData(String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String email, String byear, String ayear) {
+  public ContactData(String firstname, String middlename, String lastname, String nickname, String company, String address, String home, String mobile, String work, String fax, String email, String byear, String ayear, String address2, String notes) {
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
     this.nickname = nickname;
-    this.title = title;
     this.company = company;
     this.address = address;
     this.home = home;
     this.mobile = mobile;
     this.work = work;
+    this.fax = fax;
     this.email = email;
     this.byear = byear;
     this.ayear = ayear;
+    this.address2 = address2;
+    this.notes = notes;
   }
 
   public String getFirstname() {
@@ -45,10 +49,6 @@ public class newContactData {
 
   public String getNickname() {
     return nickname;
-  }
-
-  public String getTitle() {
-    return title;
   }
 
   public String getCompany() {
@@ -71,6 +71,10 @@ public class newContactData {
     return work;
   }
 
+  public String getFax() {
+    return fax;
+  }
+
   public String getEmail() {
     return email;
   }
@@ -81,5 +85,13 @@ public class newContactData {
 
   public String getAyear() {
     return ayear;
+  }
+
+  public String getAddress2() {
+    return address2;
+  }
+
+  public String getNotes() {
+    return notes;
   }
 }

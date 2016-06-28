@@ -1,10 +1,8 @@
 package ru.stqa.pft.appmanager;
 
-import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.appmanager.model.GroupData;
+import ru.stqa.pft.model.GroupData;
 
 /**
  * Created by Owner on 6/23/2016.

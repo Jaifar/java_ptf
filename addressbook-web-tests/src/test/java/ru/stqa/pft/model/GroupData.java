@@ -1,4 +1,4 @@
-package ru.stqa.pft.appmanager.model;
+package ru.stqa.pft.model;
 
 public class GroupData {
   private final String name;
