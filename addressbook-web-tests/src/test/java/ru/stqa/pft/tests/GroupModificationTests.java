@@ -9,15 +9,20 @@ import ru.stqa.pft.model.GroupData;
 public class GroupModificationTests extends TestBase {
 
 
+  public GroupModificationTests(String browser) {
+    super(browser);
+  }
+
   @Test
 
   public void testGroupModification(){
-    app.app.getNavigationHelper().gotoGroupPage();
-    app.app.getGroupHelper().selectGroup();
-    app.app.getGroupHelper().initGroupModification();
-    app.app.getGroupHelper().fillGroupForm(new GroupData("Test1", "Test2", "Test3"));
-    app.app.getGroupHelper().submitGroupModification();
-    app.app.getGroupHelper().returntoGroupPage();
+    app.getNavigationHelper().gotoGroupPage();
+    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().initGroupModification();
+    app.getGroupHelper().fillGroupForm(new GroupData("Test1", "Test2", "Test3"));
+    app.getGroupHelper().submitGroupModification();
+
+     app.getGroupHelper().returntoGroupPage();
 
   }
 }

@@ -13,6 +13,13 @@ import ru.stqa.pft.appmanager.ApplicationManager;
 public class TestBase {
   protected final ApplicationManager app = new ApplicationManager();
 
+  public TestBase(String browser) {
+
+  }
+
+  public TestBase() {
+  }
+
 
   @BeforeMethod
   public void setUp() throws Exception {
