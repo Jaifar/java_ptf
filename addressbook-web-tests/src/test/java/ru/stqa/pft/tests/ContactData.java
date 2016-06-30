@@ -7,31 +7,27 @@ public class ContactData {
   private final String nickname;
   private final String company;
   private final String address;
-  private final String home;
   private final String mobile;
-  private final String work;
+  private final String workphone;
+  private final String homephone;
   private final String fax;
   private final String email;
-  private final String byear;
-  private final String ayear;
-  private final String address2;
+  private final String homeaddress;
   private final String notes;
 
-  public ContactData(String firstname, String middlename, String lastname, String nickname, String company, String address, String home, String mobile, String work, String fax, String email, String byear, String ayear, String address2, String notes) {
+  public ContactData(String firstname, String middlename, String lastname, String nickname, String company, String address, String mobile, String workphone, String homephone, String fax, String email, String homeaddress, String notes) {
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
     this.nickname = nickname;
     this.company = company;
     this.address = address;
-    this.home = home;
     this.mobile = mobile;
-    this.work = work;
+    this.workphone = workphone;
+    this.homephone = homephone;
     this.fax = fax;
     this.email = email;
-    this.byear = byear;
-    this.ayear = ayear;
-    this.address2 = address2;
+    this.homeaddress = homeaddress;
     this.notes = notes;
   }
 
@@ -59,16 +55,16 @@ public class ContactData {
     return address;
   }
 
-  public String getHome() {
-    return home;
-  }
-
   public String getMobile() {
     return mobile;
   }
 
-  public String getWork() {
-    return work;
+  public String getWorkphone() {
+    return workphone;
+  }
+
+  public String getHomephone() {
+    return homephone;
   }
 
   public String getFax() {
@@ -79,16 +75,8 @@ public class ContactData {
     return email;
   }
 
-  public String getByear() {
-    return byear;
-  }
-
-  public String getAyear() {
-    return ayear;
-  }
-
-  public String getAddress2() {
-    return address2;
+  public String getHomeaddress() {
+    return homeaddress;
   }
 
   public String getNotes() {

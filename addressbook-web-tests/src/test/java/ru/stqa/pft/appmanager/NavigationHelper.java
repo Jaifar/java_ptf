@@ -11,7 +11,7 @@ public class NavigationHelper extends HelperBase {
 
 
   public NavigationHelper(WebDriver wd) {
-   super(wd);
+   super((FirefoxDriver) wd);
   }
 
   public void gotoGroupPage() {

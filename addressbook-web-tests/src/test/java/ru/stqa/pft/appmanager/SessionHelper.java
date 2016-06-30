@@ -2,6 +2,7 @@ package ru.stqa.pft.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by Owner on 6/23/2016.
@@ -9,7 +10,8 @@ import org.openqa.selenium.WebDriver;
 public class SessionHelper extends HelperBase {
 
   public SessionHelper(WebDriver wd){
-    super(wd);
+    super((FirefoxDriver) wd);
+
   }
   
   public void login(String username, String password) {

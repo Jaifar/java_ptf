@@ -1,6 +1,5 @@
 package ru.stqa.pft.tests;
 
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 public class GroupDeletionTests2 extends TestBase{
@@ -14,7 +13,7 @@ public class GroupDeletionTests2 extends TestBase{
       app.getNavigationHelper().gotoGroupPage();
       app.getGroupHelper().selectGroup();
       app.getGroupHelper().deleteSelectedGroup();
-       app.getNavigationHelper().gotoGroupPage();
+     app.getNavigationHelper().gotoGroupPage();
     }
 
 
