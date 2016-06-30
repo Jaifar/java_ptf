@@ -42,7 +42,7 @@ public class TestBase {
     wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
   }
 
-  protected void logOut() {
+  public void logOut() {
     wd.findElement(By.linkText("Logout")).click();
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).sendKeys("\\undefined");
@@ -50,15 +50,15 @@ public class TestBase {
     wd.findElement(By.name("user")).sendKeys("\\undefined");
   }
 
-  protected void returnToHomePage() {
+  public void returnToHomePage() {
     wd.findElement(By.linkText("home page")).click();
   }
 
-  protected void submitContactForm() {
+  public void submitContactForm() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  protected void fillOutContactForm(ContactData contactData) {
+  public void fillOutContactForm(ContactData contactData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
