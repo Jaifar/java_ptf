@@ -1,5 +1,6 @@
 package ru.stqa.pft.tests;
 
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 import ru.stqa.pft.model.GroupData;
 
@@ -9,9 +10,8 @@ import ru.stqa.pft.model.GroupData;
 public class GroupModificationTests extends TestBase {
 
 
-  public GroupModificationTests(String browser) {
-    super(browser);
-  }
+
+
 
   @Test
 

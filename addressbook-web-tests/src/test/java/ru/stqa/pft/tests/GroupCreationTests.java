@@ -1,13 +1,12 @@
 package ru.stqa.pft.tests;
 
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 import ru.stqa.pft.model.GroupData;
 
 public class GroupCreationTests extends TestBase {
 
-    public GroupCreationTests(String browser) {
 
-    }
 
     @Test
     public void testGroupCreationTests() {

@@ -11,13 +11,15 @@ import ru.stqa.pft.appmanager.ApplicationManager;
 
 
 public class TestBase {
-  protected final ApplicationManager app = new ApplicationManager();
-
+  protected final ApplicationManager app;
+FirefoxDriver wd;
   public TestBase(String browser) {
 
+    app = new ApplicationManager(wd);
   }
 
   public TestBase() {
+    app = new ApplicationManager(wd);
   }
 
 
