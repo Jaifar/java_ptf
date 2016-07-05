@@ -1,5 +1,6 @@
 package ru.stqa.pft.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.model.GroupData;
 
@@ -15,6 +16,7 @@ public class GroupModificationTests extends TestBase {
   @Test
 
   public void testGroupModification(){
+    int before = app.getGroupHelper().getGroupCount();
    app.getNavigationHelper().gotoGroupPage();
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupModification();
@@ -22,6 +24,8 @@ public class GroupModificationTests extends TestBase {
    app.getGroupHelper().submitGroupModification();
 
      app.getGroupHelper().returntoGroupPage();
+    int after = app.getGroupHelper().getGroupCount();
+    Assert.assertEquals(after, before);
 
   }
 }
