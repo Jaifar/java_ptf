@@ -2,7 +2,7 @@ package ru.stqa.pft.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.stqa.pft.Equation;
+import ru.stqa.pft.Tests2.Equation;
 
 /**
  * Created by Owner on 6/16/2016.

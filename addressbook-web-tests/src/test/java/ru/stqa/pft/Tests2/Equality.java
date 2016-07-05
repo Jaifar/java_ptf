@@ -1,4 +1,4 @@
-package ru.stqa.pft;
+package ru.stqa.pft.Tests2;
 
 /**
  * Created by Owner on 6/21/2016.

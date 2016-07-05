@@ -2,22 +2,23 @@ package ru.stqa.pft.tests;
 
 public class ContactData {
   private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String nickname;
-  private final String company;
-  private final String address;
-  private final String mobile;
-  private final String workphone;
-  private final String homephone;
-  private final String fax;
-  private final String email;
-  private final String homeaddress;
-  private final String notes;
+  private String middlename;
+  private String lastname;
+  private String nickname;
+  private String company;
+  private String address;
+  private String mobile;
+  private String workphone;
+  private String homephone;
+  private String fax;
+  private String email;
+  private String homeaddress;
+  private String notes;
+  private String group;
 
-  public ContactData(String firstname, String middlename, String lastname, String nickname, String company, String address, String mobile, String workphone, String homephone, String fax, String email, String homeaddress, String notes) {
+  public ContactData(String middlename, String homepage, String firstname) {
     this.firstname = firstname;
-    this.middlename = middlename;
+    this.middlename = this.middlename;
     this.lastname = lastname;
     this.nickname = nickname;
     this.company = company;
@@ -29,7 +30,10 @@ public class ContactData {
     this.email = email;
     this.homeaddress = homeaddress;
     this.notes = notes;
+    this.group = group;
   }
+
+
 
   public String getFirstname() {
     return firstname;
@@ -81,5 +85,9 @@ public class ContactData {
 
   public String getNotes() {
     return notes;
+  }
+
+  public String getGroup() {
+    return group;
   }
 }
