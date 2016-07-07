@@ -17,7 +17,7 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
-  public ContactHelper getContactHelper;
+
 
 
   public ApplicationManager(FirefoxDriver wd) {

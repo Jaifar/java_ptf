@@ -5,7 +5,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.stqa.pft.appmanager.ApplicationManager;
-import ru.stqa.pft.appmanager.ContactHelper;
 
 /**
  * Created by Owner on 6/22/2016.
@@ -14,7 +13,6 @@ import ru.stqa.pft.appmanager.ContactHelper;
 
 public class TestBase {
   protected final ApplicationManager app;
-  protected final ContactHelper contactHelper = new ContactHelper();
   FirefoxDriver wd;
   private String username;
   private String password;
@@ -64,9 +62,7 @@ public class TestBase {
   }
 
 
-  public ContactHelper getContactHelper() {
-    return contactHelper;
-  }
+
 
   protected void fillOutContactForm() {
       wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[4]/td[8]/a/img")).click();
