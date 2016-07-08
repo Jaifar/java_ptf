@@ -14,7 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.*;
 import static org.openqa.selenium.OutputType.*;
 
-public class ContactModificationTests {
+public class ContactModificationTests extends TestBase2 {
     FirefoxDriver wd;
     
     @BeforeMethod
@@ -56,7 +56,7 @@ public class ContactModificationTests {
     public void tearDown() {
         wd.quit();
     }
-    
+
     public static boolean isAlertPresent(FirefoxDriver wd) {
         try {
             wd.switchTo().alert();

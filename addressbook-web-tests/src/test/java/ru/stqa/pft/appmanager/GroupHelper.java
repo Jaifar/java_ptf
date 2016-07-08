@@ -73,4 +73,8 @@ public class GroupHelper extends HelperBase  {
   public void createGroup(GroupData group) {
 
   }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("Selected[]"));
+  }
 }
