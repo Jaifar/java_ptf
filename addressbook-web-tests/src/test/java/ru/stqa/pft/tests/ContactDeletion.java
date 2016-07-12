@@ -1,5 +1,3 @@
-package ru.stqa.pft.tests;
-
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -25,20 +23,21 @@ public class ContactDeletion {
     
     @Test
     public void ContactDeletion() {
-        wd.get("http://localhost/addressbook/");
+        wd.get("http://localhost/addressbook/delete.php?part=67;");
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).sendKeys("\\undefined");
-        wd.findElement(By.id("header")).click();
+        wd.findElement(By.id("LoginForm")).click();
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).clear();
         wd.findElement(By.name("user")).sendKeys("admin");
-        wd.findElement(By.cssSelector("label")).click();
+        wd.findElement(By.id("LoginForm")).click();
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).clear();
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-        if (!wd.findElement(By.id("58")).isSelected()) {
-            wd.findElement(By.id("58")).click();
+        wd.findElement(By.linkText("home")).click();
+        if (!wd.findElement(By.name("selected[]")).isSelected()) {
+            wd.findElement(By.name("selected[]")).click();
         }
         wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
         wd.findElement(By.linkText("home")).click();
