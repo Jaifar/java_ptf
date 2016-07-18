@@ -5,27 +5,29 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.model.ContactData;
 
 /**
- * Created by Owner on 7/7/2016.
+ * Created by Owner on 7/17/2016.
  */
 public class ContactHelper extends ContactHelperBase {
 
   public ContactHelper(FirefoxDriver wd) {
     super(wd);
+
   }
 
   public void returnToHomePage() {
-    wd.findElement(By.linkText("home page")).click();
+    click(By.linkText("home page"));
   }
 
   public void submitContactForm() {
-    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
   public void fillOutContactForm(ContactData contactData) {
+    wd.get("http://localhost/addressbook/edit.php");
     type(By.name("firstname"), contactData.getFirstname());
-    wd.findElement(By.cssSelector("label")).click();
+    click(By.cssSelector("label"));
     type(By.name("middlename"), contactData.getMiddlename());
-    wd.findElement(By.name("theform")).click();
+    click(By.name("theform"));
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
     type(By.name("title"), contactData.getTitle());
@@ -37,4 +39,32 @@ public class ContactHelper extends ContactHelperBase {
     type(By.name("email"), contactData.getEmail());
   }
 
+  public void deleteContact() {
+    wd.switchTo().alert().accept();
+  }
+
+  public void selectContact() {
+
+    if (!wd.findElement(By.name("selected[]")).isSelected()) {
+      click(By.name("selected[]"));
+    }
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+
+
+  public void sumitContactModification() {
+    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+  }
+
+
+  public void selectContactMofication() {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+  }
+
+  public void updateContactForm() {
+    wd.findElement(By.name("nickname")).click();
+    wd.findElement(By.name("nickname")).clear();
+    wd.findElement(By.name("nickname")).sendKeys("Jaifar-Jaifar");
+  }
 }

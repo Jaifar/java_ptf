@@ -6,16 +6,18 @@ public class ContactDeletion  extends TestBase2{
 
     
 
+
+
+
     
     @Test
     public void testContactDeletion() {
 
-        selectContact();
-        deleteContact();
-        returnsToHomePage();
-        logOut();
+        app.getContactHelper().selectContact();
+        app.getContactHelper().deleteContact();
+        app.getNavigationHelperContact().returnsToHomePage();
+        app.logOut();
 
 }
-
 
 }

@@ -1,46 +1,34 @@
 package ru.stqa.pft.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
- * Created by Owner on 7/7/2016.
+ * Created by Owner on 7/17/2016.
  */
 public class ContactHelperBase {
-  protected FirefoxDriver wd;
-
+  FirefoxDriver wd;
 
   public ContactHelperBase(FirefoxDriver wd) {
     this.wd = wd;
   }
 
-  protected void type(By locator, String text) {
+  public void click(By locator) {
     wd.findElement(locator).click();
+  }
+
+  public void type(By locator, String text) {
+    click(locator);
     wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
-  }
+    wd.findElement(locator).sendKeys(text);}
 
-  protected void returnHomePage() {
-
-  }
-
-  protected void submitEdition() {
-
-  }
-
-  protected void editName() {
-
-  }
-
-  protected void logOut() {
-
-  }
-
-  protected void returnToHomePage() {
-
-  }
-
-  protected void editContact() {
-
+  public  boolean isAlertPresent() {
+    try {
+      wd.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
   }
 }
