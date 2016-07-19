@@ -9,8 +9,6 @@ import ru.stqa.pft.model.ContactData;
  */
 public class ContactHelper extends ContactHelperBase {
 
-  private int contactCount;
-
   public ContactHelper(FirefoxDriver wd) {
     super(wd);
 
@@ -54,6 +52,7 @@ public class ContactHelper extends ContactHelperBase {
   }
 
 
+
   public void sumitContactModification() {
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
   }
@@ -68,29 +67,4 @@ public class ContactHelper extends ContactHelperBase {
     wd.findElement(By.name("nickname")).clear();
     wd.findElement(By.name("nickname")).sendKeys("Jaifar-Jaifar");
   }
-
-  public void createContact(ContactData contact) {
-    fillOutContactForm(contact);
-    submitContactForm();
-    returnToHomePage();
-    logOut();
-
-  }
-
-  private void logOut() {
-
-  }
-
-  public boolean isThereAContact() {
-    return isElementPresent(By.name("selected[]"));
-  }
-
-  private boolean isElementPresent(By xpath) {
-    return false;
-  }
-
-  public int getContactCount() {
-    return wd.findElements(By.name("selected[]")).size();
-  }
 }
-
