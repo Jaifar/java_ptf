@@ -56,7 +56,7 @@ public class HelperBase {
   public void logout() {
   }
 
-  protected boolean isElementPresent(By locator) {
+  boolean isElementPresent(By locator) {
     try {
       wd.findElement(locator);
       return true;
