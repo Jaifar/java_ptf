@@ -15,6 +15,7 @@ public class ContactModification extends TestBase2 {
   public void testContactModification(){
 
     app.getNavigationHelperContact().returnsToHomePage();
+    int before = app.getContactHelper().getContactCount();
 
 
     if (! app.getContactHelper().isThereAContact()){
@@ -26,7 +27,8 @@ public class ContactModification extends TestBase2 {
 
     app.getContactHelper().sumitContactModification();
     app.getContactHelper().returnToHomePage();
-
+    int after = app.getContactHelper().getContactCount();
+    Assert.assertEquals(after, before);
 
     app.logOut();
   }

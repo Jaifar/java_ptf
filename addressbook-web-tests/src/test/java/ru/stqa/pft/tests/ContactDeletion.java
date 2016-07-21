@@ -18,6 +18,7 @@ public class ContactDeletion  extends TestBase2{
     public void testContactDeletion() {
 
         app.getNavigationHelperContact().returnsToHomePage();
+        int before = app.getContactHelper().getContactCount();
 
 
         if (! app.getContactHelper().isThereAContact()){
@@ -29,6 +30,8 @@ public class ContactDeletion  extends TestBase2{
         app.getContactHelper().deleteContact();
 
         app.getNavigationHelperContact().returnsToHomePage();
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before -1);
 
 
         app.logOut();

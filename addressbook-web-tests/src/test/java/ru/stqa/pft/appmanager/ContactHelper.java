@@ -105,17 +105,7 @@ public class ContactHelper extends ContactHelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> getContactList() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement>elements = wd.findElements(By.cssSelector("span.contact"));
-    for (WebElement element : elements) {
-      String name = element.getText();
 
-      ContactData contact = new ContactData("firstname", "middlename", "lastname", "nickname", "title", "company", "address", "homephone", "mobile", " workphone", "email");
-      contacts.add(contact);
-    }
-
-    return contacts;
-  }}
+  }
 
 
