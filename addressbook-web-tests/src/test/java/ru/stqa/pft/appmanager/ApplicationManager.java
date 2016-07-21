@@ -42,7 +42,7 @@ public class ApplicationManager {
 
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
-    sessionHelper = new SessionHelper(wd);
+    sessionHelper = new SessionHelper((FirefoxDriver) wd);
     sessionHelper.login("admin", "secret");
 
 

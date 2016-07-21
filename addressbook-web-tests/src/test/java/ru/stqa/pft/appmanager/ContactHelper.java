@@ -51,7 +51,7 @@ public class ContactHelper extends ContactHelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public void selectContact(int i) {
+  public void selectContact() {
 
     if (!wd.findElement(By.name("selected[]")).isSelected()) {
       click(By.name("selected[]"));
@@ -65,7 +65,7 @@ public class ContactHelper extends ContactHelperBase {
   }
 
 
-  public void selectContactMofication(int i) {
+  public void selectContactMofication() {
     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
   }
 
@@ -79,7 +79,7 @@ public class ContactHelper extends ContactHelperBase {
     fillOutContactForm(contact);
     submitContactForm();
     returnToHomePage();
-    logOut();
+
 
   }
 
@@ -107,7 +107,7 @@ public class ContactHelper extends ContactHelperBase {
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement>elements = wd.findElements(By.cssSelector("spah.contact"));
+    List<WebElement>elements = wd.findElements(By.cssSelector("span.contact"));
     for (WebElement element : elements) {
       String name = element.getText();
 

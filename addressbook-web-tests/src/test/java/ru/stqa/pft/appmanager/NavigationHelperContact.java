@@ -14,6 +14,13 @@ public class NavigationHelperContact extends ContactHelperBase{
   }
 
   public void returnsToHomePage() {
+   if (isElementPresent(By.id("maintable"))){
+      return;
+    }
     click(By.linkText("home"));
+  }
+
+  private boolean isElementPresent(By maintable) {
+    return false;
   }
 }
