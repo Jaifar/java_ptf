@@ -15,20 +15,14 @@ public class ContactModification extends TestBase2 {
   public void testContactModification(){
 
     app.getNavigationHelperContact().returnsToHomePage();
-    int before = app.getContactHelper().getContactCount();
-
-
-    if (! app.getContactHelper().isThereAContact()){
-      app.getContactHelper().createContact(new ContactData("Tetiana", "V", "Kravchuk", "Jaifar", "Me", "Informatrix Global", "Los Altos, California", "345-987-9876", "978-678-9876", "489-983-9874", "teti@gmail.com"));
-    }
 
     app.getContactHelper().selectContactMofication();
     app.getContactHelper().updateContactForm();
 
     app.getContactHelper().sumitContactModification();
-    app.getContactHelper().returnToHomePage();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before);
+    app.getContactHelper().goToHomePage();
+
+
 
     app.logOut();
   }

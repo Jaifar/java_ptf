@@ -13,6 +13,8 @@ public class NavigationHelperContact extends ContactHelperBase{
    super(wd);
   }
 
+
+
   public void returnsToHomePage() {
    if (isElementPresent(By.id("maintable"))){
       return;
@@ -20,7 +22,5 @@ public class NavigationHelperContact extends ContactHelperBase{
     click(By.linkText("home"));
   }
 
-  private boolean isElementPresent(By maintable) {
-    return false;
+
   }
-}

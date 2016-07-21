@@ -1,20 +1,17 @@
 package ru.stqa.pft.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.model.ContactData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Owner on 7/17/2016.
  */
 public class ContactHelper extends ContactHelperBase {
 
-  private int contactCount;
+
 
 
   public ContactHelper(FirefoxDriver wd) {
@@ -22,15 +19,15 @@ public class ContactHelper extends ContactHelperBase {
 
   }
 
-  public void returnToHomePage() {
+  public void goToHomePage() {
     click(By.linkText("home page"));
   }
 
   public void submitContactForm() {
-    click(By.xpath("//div[@id='content']/form/input[21]"));
+    click(By.name("submit"));
   }
 
-  public void fillOutContactForm(ContactData contactData) {
+  public void fillOutContactForm(ContactData contactData, boolean creation) {
     wd.get("http://localhost/addressbook/edit.php");
     type(By.name("firstname"), contactData.getFirstname());
     click(By.cssSelector("label"));
@@ -38,14 +35,18 @@ public class ContactHelper extends ContactHelperBase {
     click(By.name("theform"));
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
-    type(By.name("title"), contactData.getTitle());
-    type(By.name("company"), contactData.getCompany());
-    type(By.name("address"), contactData.getAddress());
-    type(By.name("home"), contactData.getHomephone());
-    type(By.name("mobile"), contactData.getMobile());
-    type(By.name("work"), contactData.getWorkphone());
-    type(By.name("email"), contactData.getEmail());
-  }
+
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
+
+
+
+    }
+
+
 
   public void deleteContact() {
     wd.switchTo().alert().accept();
@@ -61,7 +62,7 @@ public class ContactHelper extends ContactHelperBase {
 
 
   public void sumitContactModification() {
-    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+    click(By.name("update"));
   }
 
 
@@ -75,13 +76,10 @@ public class ContactHelper extends ContactHelperBase {
     wd.findElement(By.name("nickname")).sendKeys("Jaifar-Jaifar");
   }
 
-  public void createContact (ContactData contact) {
-    fillOutContactForm(contact);
-    submitContactForm();
-    returnToHomePage();
 
 
-  }
+
+
 
   private void logOut() {
 
@@ -91,14 +89,7 @@ public class ContactHelper extends ContactHelperBase {
     return isElementPresent(By.xpath("selected[]"));
   }
 
-  private boolean isElementPresent(By id) {
 
-      try {
-        wd.findElement(id);
-        return true;
-      }catch (NoSuchElementException ex){
-        return false;
-      }}
 
 
   public int getContactCount() {
