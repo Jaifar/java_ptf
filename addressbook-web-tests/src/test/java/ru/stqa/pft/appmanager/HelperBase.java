@@ -16,9 +16,6 @@ public class HelperBase {
     this.wd = (FirefoxDriver) wd;
   }
 
-  public HelperBase() {
-
-  }
 
   protected void click(By locator) {
     wd.findElement(locator).click();
@@ -34,7 +31,6 @@ public class HelperBase {
 
 
 
-
   public  boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
@@ -45,16 +41,6 @@ public class HelperBase {
 
   }
 
-  public void fillOutContactCreationForm() {
-    
-  }
-
-  public void submit() {
-    
-  }
-
-  public void logout() {
-  }
 
   boolean isElementPresent(By locator) {
     try {

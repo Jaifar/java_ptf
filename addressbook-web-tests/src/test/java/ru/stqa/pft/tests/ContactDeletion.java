@@ -6,33 +6,27 @@ import ru.stqa.pft.model.ContactData;
 
 import java.util.List;
 
-public class ContactDeletion  extends TestBase2{
-
-    
+public class ContactDeletion extends TestBase2 {
 
 
+  @Test
+  public void testContactDeletion() {
 
+    app.getNavigationHelperContact().returnsToHomePage();
 
-    
-    @Test
-    public void testContactDeletion() {
-
-        app.getNavigationHelperContact().returnsToHomePage();
-
-
-
-
-
-        app.getContactHelper().selectContact();
-        app.getContactHelper().deleteContact();
-
-        app.getNavigationHelperContact().returnsToHomePage();
-
-
-
-        app.logOut();
-
-
+    if (! app.getContactHelper().isThereAContact()) {
+      app.getContactHelper().createContact(new ContactData("Tetiana", "V", "Kravchuk", "Jaifar", null));
     }
+
+    app.getContactHelper().selectContact();
+    app.getContactHelper().deleteContact();
+    app.getNavigationHelperContact().returnsToHomePage();
+
+
+
+    app.logOut();
+
+
+  }
 
 }

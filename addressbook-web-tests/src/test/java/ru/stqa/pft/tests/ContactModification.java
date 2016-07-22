@@ -16,12 +16,18 @@ public class ContactModification extends TestBase2 {
 
     app.getNavigationHelperContact().returnsToHomePage();
 
+
+    if (! app.getContactHelper().isThereAContact()){
+      app.getContactHelper().createContact(new ContactData("Tetiana", "V", "Kravchuk", "Jaifar", null));
+    }
+
+
     app.getContactHelper().selectContactMofication();
     app.getContactHelper().updateContactForm();
 
+
     app.getContactHelper().sumitContactModification();
     app.getContactHelper().goToHomePage();
-
 
 
     app.logOut();

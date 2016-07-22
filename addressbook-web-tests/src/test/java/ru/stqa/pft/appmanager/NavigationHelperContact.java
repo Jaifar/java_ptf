@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class NavigationHelperContact extends ContactHelperBase{
 
 
+
   public NavigationHelperContact(FirefoxDriver wd) {
    super(wd);
   }

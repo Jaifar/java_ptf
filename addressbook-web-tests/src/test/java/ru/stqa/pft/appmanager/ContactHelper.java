@@ -27,7 +27,7 @@ public class ContactHelper extends ContactHelperBase {
     click(By.name("submit"));
   }
 
-  public void fillOutContactForm(ContactData contactData, boolean creation) {
+  public void fillOutContactForm(ContactData contactData) {
     wd.get("http://localhost/addressbook/edit.php");
     type(By.name("firstname"), contactData.getFirstname());
     click(By.cssSelector("label"));
@@ -36,15 +36,12 @@ public class ContactHelper extends ContactHelperBase {
     type(By.name("lastname"), contactData.getLastname());
     type(By.name("nickname"), contactData.getNickname());
 
-    if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-    }else {
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
 
 
-    }
+
+
 
 
 
@@ -54,10 +51,8 @@ public class ContactHelper extends ContactHelperBase {
 
   public void selectContact() {
 
-    if (!wd.findElement(By.name("selected[]")).isSelected()) {
-      click(By.name("selected[]"));
-    }
-    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    wd.findElements(By.name("selected[]"));
+
   }
 
 
@@ -97,6 +92,15 @@ public class ContactHelper extends ContactHelperBase {
   }
 
 
+  public void createContact(ContactData contact) {
+     fillOutContactForm(contact);
+     submitContactForm();
+      goToHomePage();
   }
+
+
+
+  }
+
 
 
