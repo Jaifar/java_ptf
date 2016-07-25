@@ -45,13 +45,18 @@ public class ContactHelper extends ContactHelperBase {
 
 
 
-  public void deleteContact() {
-    wd.switchTo().alert().accept();
+  public void deleteContact(){
+  if (!wd.findElement(By.name("selected[]")).isSelected()) {
+    wd.findElement(By.name("selected[]")).click();
+  }
+  wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+  wd.switchTo().alert().accept();
+
   }
 
-  public void selectContact() {
+  public void selectContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
 
-    wd.findElements(By.name("selected[]"));
 
   }
 

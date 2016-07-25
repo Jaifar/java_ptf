@@ -4,29 +4,34 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.model.ContactData;
 
-import java.util.List;
+public class ContactDeletion  extends TestBase2{
 
-public class ContactDeletion extends TestBase2 {
-
-
-  @Test
-  public void testContactDeletion() {
-
-    app.getNavigationHelperContact().returnsToHomePage();
-
-    if (! app.getContactHelper().isThereAContact()) {
-      app.getContactHelper().createContact(new ContactData("Tetiana", "V", "Kravchuk", "Jaifar", null));
-    }
-
-    app.getContactHelper().selectContact();
-    app.getContactHelper().deleteContact();
-    app.getNavigationHelperContact().returnsToHomePage();
+    
 
 
 
-    app.logOut();
+
+    
+    @Test
+    public void testContactDeletion() {
+
+        app.getNavigationHelperContact().returnsToHomePage();
+        int before = app.getContactHelper().getContactCount();
+
+        if (! app.getContactHelper().isThereAContact()){
+            app.getContactHelper().createContact(new ContactData("Tetiana", "V", "Kravchuk", "Jaifar", "test1"));
+        }
+
+        app.getContactHelper().selectContact(before -1);
+        app.getContactHelper().deleteContact();
+
+        app.getNavigationHelperContact().returnsToHomePage();
+
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before - 1);
 
 
-  }
+
+}
 
 }
