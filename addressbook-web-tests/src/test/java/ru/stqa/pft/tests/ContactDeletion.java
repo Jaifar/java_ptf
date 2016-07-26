@@ -14,11 +14,11 @@ public class ContactDeletion extends TestBase2 {
 
     app.getNavigationHelperContact().returnsToHomePage();
 
-    List<ContactData> before = app.getContactHelper().getContactList();
+
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Tetiana", "V", "Kravchuk", "Jaifar", "test1"));
     }
-
+    List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteContact();
 

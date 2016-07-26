@@ -18,14 +18,14 @@ public class ContactModification extends TestBase2 {
     app.getNavigationHelperContact().returnsToHomePage();
 
 
-    if (! app.getContactHelper().isThereAContact()){
-      app.getContactHelper().createContact(new ContactData("Tetiana","V", "Kravchuk","Jaifar", null));
+    if (!app.getContactHelper().isThereAContact()) {
+      app.getContactHelper().createContact(new ContactData("Tetiana", "V", "Kravchuk", "Jaifar", "test1"));
     }
     List<ContactData> before = app.getContactHelper().getContactList();
 
     app.getContactHelper().selectContactMofication(before.size() - 1);
     app.getContactHelper().updateContactForm();
-     ContactData contact = new ContactData(before.get(before.size() -1).getId(),"firstname", "middlename", "lastname", "nickname", null);
+     ContactData contact = new ContactData(before.get(before.size() -1).getId(),"Tetiana", "Kravchuk", null,null, null);
 
     app.getContactHelper().submitContactModification();
     app.getContactHelper().goToHomePage();
@@ -35,7 +35,6 @@ public class ContactModification extends TestBase2 {
     Assert.assertEquals(after.size(),before.size());
     before.remove(before.size() -1);
     before.add(contact);
-
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 
