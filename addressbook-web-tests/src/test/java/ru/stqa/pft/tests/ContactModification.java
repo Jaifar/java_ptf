@@ -35,6 +35,7 @@ public class ContactModification extends TestBase2 {
     Assert.assertEquals(after.size(),before.size());
     before.remove(before.size() -1);
     before.add(contact);
+
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 
