@@ -10,7 +10,7 @@ import java.util.List;
 
 public class NewContactCreation extends TestBase2 {
 
-  @Test
+  @Test(enabled = false)
   public void newContactCreationtests() {
     app.getNavigationHelperContact().returnsToHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();

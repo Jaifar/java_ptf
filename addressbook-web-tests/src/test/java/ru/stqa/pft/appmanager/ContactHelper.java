@@ -114,6 +114,18 @@ public class ContactHelper extends ContactHelperBase {
 
 
   }
+  protected void fillOutContactForm() {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[4]/td[8]/a/img")).click();
+    wd.findElement(By.name("nickname")).click();
+    wd.findElement(By.name("nickname")).clear();
+    wd.findElement(By.name("nickname")).sendKeys("Jaifar Jaifar");
+    wd.findElement(By.xpath("//div[@id='content']/form[1]")).click();
+    wd.findElement(By.name("homepage")).click();
+    wd.findElement(By.name("homepage")).clear();
+    wd.findElement(By.name("homepage")).sendKeys("www.facebook.com");
+    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+    wd.findElement(By.linkText("home page")).click();
+  }
 }
 
 

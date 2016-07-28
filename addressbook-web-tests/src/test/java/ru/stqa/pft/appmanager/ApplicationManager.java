@@ -39,7 +39,6 @@ public class ApplicationManager {
     }
   wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
-
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper((FirefoxDriver) wd);
@@ -55,11 +54,12 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  public GroupHelper getGroupHelper() {
-    return groupHelper;
-  }
 
-  public NavigationHelper getNavigationHelper() {
+
+  public NavigationHelper goTo() {
     return navigationHelper;
+  }
+  public GroupHelper group() {
+    return groupHelper;
   }
 }

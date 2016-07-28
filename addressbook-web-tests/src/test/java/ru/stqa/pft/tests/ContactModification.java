@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ContactModification extends TestBase2 {
 
-  @Test
+  @Test (enabled = false)
   public void testContactModification(){
 
     app.getNavigationHelperContact().returnsToHomePage();

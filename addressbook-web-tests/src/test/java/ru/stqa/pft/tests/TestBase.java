@@ -2,8 +2,8 @@ package ru.stqa.pft.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.appmanager.ApplicationManager;
 
 /**
@@ -12,10 +12,8 @@ import ru.stqa.pft.appmanager.ApplicationManager;
 
 
 public class TestBase {
-  protected final ApplicationManager app;
-  FirefoxDriver wd;
-  private String username;
-  private String password;
+  protected final ApplicationManager app ;
+
 
 
   public TestBase() {
@@ -26,37 +24,14 @@ public class TestBase {
   }
 
 
-  @BeforeMethod
+  @BeforeSuite
   public void setUp() throws Exception {
     app.init();
   }
 
-  public void login(String username, String password) {
-    this.username = username;
-    this.password = password;
-    wd.get("http://localhost/addressbook/edit.php");
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).sendKeys("\\undefined");
-    wd.findElement(By.id("nav")).click();
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(username);
-    wd.findElement(By.cssSelector("label")).click();
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
-  }
 
-  public void logOut() {
-    wd.findElement(By.linkText("Logout")).click();
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).sendKeys("\\undefined");
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).sendKeys("\\undefined");
-  }
 
-  @AfterMethod
+  @AfterSuite
   public void tearDown() {
     app.stop();
   }
@@ -64,16 +39,5 @@ public class TestBase {
 
 
 
-  protected void fillOutContactForm() {
-      wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[4]/td[8]/a/img")).click();
-      wd.findElement(By.name("nickname")).click();
-      wd.findElement(By.name("nickname")).clear();
-      wd.findElement(By.name("nickname")).sendKeys("Jaifar Jaifar");
-      wd.findElement(By.xpath("//div[@id='content']/form[1]")).click();
-      wd.findElement(By.name("homepage")).click();
-      wd.findElement(By.name("homepage")).clear();
-      wd.findElement(By.name("homepage")).sendKeys("www.facebook.com");
-      wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
-      wd.findElement(By.linkText("home page")).click();
-  }
+
 }
