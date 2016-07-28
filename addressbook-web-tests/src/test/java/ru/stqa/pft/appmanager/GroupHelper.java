@@ -37,7 +37,7 @@ public class GroupHelper extends HelperBase  {
     click(By.name("new"));
     click(By.name("group_name"));
     wd.findElement(By.name("group_name")).clear();
-    wd.findElement(By.name("group_name")).sendKeys("Test2");
+    wd.findElement(By.name("group_name")).sendKeys("Test1");
     click(By.name("group_header"));
     wd.findElement(By.name("group_header")).clear();
     wd.findElement(By.name("group_header")).sendKeys("111");

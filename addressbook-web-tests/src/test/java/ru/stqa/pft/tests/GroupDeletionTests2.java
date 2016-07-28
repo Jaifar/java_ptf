@@ -19,7 +19,6 @@ public class GroupDeletionTests2 extends TestBase {
 
   @Test
   public void groupDeletionTests() {
-
     List<GroupData> before = app.group().list();
     int index = before.size() - 1;
     app.group().delete(index);
