@@ -35,6 +35,22 @@ public class GroupHelper extends HelperBase  {
 
   public void create() {
     click(By.name("new"));
+    click(By.name("group_name"));
+    wd.findElement(By.name("group_name")).clear();
+    wd.findElement(By.name("group_name")).sendKeys("Test2");
+    click(By.name("group_header"));
+    wd.findElement(By.name("group_header")).clear();
+    wd.findElement(By.name("group_header")).sendKeys("111");
+    click(By.name("group_footer"));
+    wd.findElement(By.name("group_footer")).clear();
+    wd.findElement(By.name("group_footer")).sendKeys("1111");
+    click(By.name("group_footer"));
+    wd.findElement(By.name("group_footer")).clear();
+    wd.findElement(By.name("group_footer")).sendKeys("2222");
+    click(By.name("submit"));
+
+
+
   }
 
   public void deleteSelectedGroup() {
@@ -43,7 +59,7 @@ public class GroupHelper extends HelperBase  {
 
   public void selectGroup(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
-    click(By.name("selected[]"));
+
   }
 
   public void initGroupModification() {
@@ -79,6 +95,25 @@ public class GroupHelper extends HelperBase  {
 
 
 
+
+
+
+  protected void fillOutContactForm() {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[4]/td[8]/a/img")).click();
+    wd.findElement(By.name("nickname")).click();
+    wd.findElement(By.name("nickname")).clear();
+    wd.findElement(By.name("nickname")).sendKeys("Jaifar Jaifar");
+    wd.findElement(By.xpath("//div[@id='content']/form[1]")).click();
+    wd.findElement(By.name("homepage")).click();
+    wd.findElement(By.name("homepage")).clear();
+    wd.findElement(By.name("homepage")).sendKeys("www.facebook.com");
+    wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
+    wd.findElement(By.linkText("home page")).click();
+  }
+
+
+
+
   public void create(GroupData group) {
   }
 
@@ -106,7 +141,7 @@ public class GroupHelper extends HelperBase  {
   }
 
   public List<GroupData> list() {
-    List<GroupData> groups = new ArrayList<GroupData>();
+    List<GroupData> groups = new ArrayList<>();
     List<WebElement>elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();

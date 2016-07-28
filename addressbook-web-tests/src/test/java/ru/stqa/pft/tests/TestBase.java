@@ -2,8 +2,8 @@ package ru.stqa.pft.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import ru.stqa.pft.appmanager.ApplicationManager;
 
 /**
@@ -12,32 +12,26 @@ import ru.stqa.pft.appmanager.ApplicationManager;
 
 
 public class TestBase {
-  protected final ApplicationManager app ;
+  protected final ApplicationManager app;
 
 
+  FirefoxDriver wd;
 
   public TestBase() {
-
-    FirefoxDriver wd = null;
     app = new ApplicationManager(wd);
-
   }
 
 
-  @BeforeSuite
+  @BeforeMethod
   public void setUp() throws Exception {
     app.init();
   }
 
 
-
-  @AfterSuite
+  @AfterMethod
   public void tearDown() {
     app.stop();
   }
-
-
-
 
 
 }
