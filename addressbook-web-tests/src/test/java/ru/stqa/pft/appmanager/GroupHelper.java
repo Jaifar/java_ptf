@@ -6,12 +6,14 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Owner on 6/23/2016.
  */
-public class GroupHelper extends HelperBase  {
+public class GroupHelper extends HelperBase {
 
 
   public GroupHelper(WebDriver wd) {
@@ -22,7 +24,7 @@ public class GroupHelper extends HelperBase  {
     click(By.linkText("groups"));
   }
 
-  public void submitGroupCreation(){
+  public void submitGroupCreation() {
     click(By.name("submit"));
 
   }
@@ -50,7 +52,6 @@ public class GroupHelper extends HelperBase  {
     click(By.name("submit"));
 
 
-
   }
 
   public void deleteSelectedGroup() {
@@ -61,7 +62,10 @@ public class GroupHelper extends HelperBase  {
     wd.findElements(By.name("selected[]")).get(index).click();
 
   }
+  public void selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
 
+  }
   public void initGroupModification() {
     click(By.name("edit"));
   }
@@ -69,6 +73,7 @@ public class GroupHelper extends HelperBase  {
   public void submitGroupModification() {
     click(By.name("update"));
   }
+
   public void login(String username, String password) {
     wd.get("http://localhost/addressbook/edit.php");
     wd.findElement(By.name("pass")).click();
@@ -93,11 +98,6 @@ public class GroupHelper extends HelperBase  {
   }
 
 
-
-
-
-
-
   protected void fillOutContactForm() {
     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[4]/td[8]/a/img")).click();
     wd.findElement(By.name("nickname")).click();
@@ -112,21 +112,28 @@ public class GroupHelper extends HelperBase  {
   }
 
 
-
-
   public void create(GroupData group) {
   }
 
 
-    public void modify(int index, GroupData group) {
-     selectGroup(index);
-     initGroupModification();
-      fillGroupForm(group);
-     submitGroupModification();
-      returntoGroupPage();
-    }
+  public void modify( GroupData group) {
+    selectGroupById(group.getId());
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    returntoGroupPage();
+  }
+
   public void delete(int index) {
     selectGroup(index);
+    deleteSelectedGroup();
+    returntoGroupPage();
+  }
+
+  
+
+  public void delete(GroupData group) {
+    selectGroupById(group.getId());
     deleteSelectedGroup();
     returntoGroupPage();
   }
@@ -142,7 +149,7 @@ public class GroupHelper extends HelperBase  {
 
   public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<>();
-    List<WebElement>elements = wd.findElements(By.cssSelector("span.group"));
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
@@ -150,4 +157,18 @@ public class GroupHelper extends HelperBase  {
     }
     return groups;
   }
+
+  public Set<GroupData> all() {
+    Set<GroupData> groups = new HashSet<GroupData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      groups.add(new GroupData().withId(id).withName(name));
+    }
+    return groups;
+  }
+
+
+
 }
