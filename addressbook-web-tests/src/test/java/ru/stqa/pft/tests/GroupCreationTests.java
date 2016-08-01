@@ -1,12 +1,11 @@
 package ru.stqa.pft.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.model.GroupData;
+import ru.stqa.pft.model.Groups;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
 
@@ -14,13 +13,16 @@ public class GroupCreationTests extends TestBase {
   public void testGroupCreationTests() {
 
     app.goTo().groupPage();
-    Set<GroupData> before = app.group().all();
-    int index = before.size() +1;
+   Groups before = app.group().all();
+
     GroupData group = new GroupData().withName("Test1");
     app.group().create();
     app.goTo().groupPage();
-    Set<GroupData> after = app.group().all();
-    Assert.assertEquals(after.size(), index);
-    group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
-    before.add(group);
-    Assert.assertEquals(before, after);}}
+    Groups after = app.group().all();
+    assertThat(after.size(),equalTo(before.size() +1));
+
+    assertThat(after, equalTo(
+            before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+  }
+
+}
