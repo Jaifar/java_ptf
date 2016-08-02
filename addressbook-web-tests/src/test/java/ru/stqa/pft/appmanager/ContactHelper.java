@@ -9,7 +9,9 @@ import ru.stqa.pft.model.ContactData;
 import ru.stqa.pft.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Owner on 7/17/2016.
@@ -40,8 +42,8 @@ public class ContactHelper extends ContactHelperBase {
     type(By.name("nickname"), contactData.getNickname());
 
   }
- public void modify(int index, ContactData contact) {
-    selectContactMofication(index);
+ public void modify(ContactData contact) {
+    selectContactById(contact.getId());
     updateContactForm();
     submitContactModification();
     goToHomePage();
@@ -58,6 +60,11 @@ public class ContactHelper extends ContactHelperBase {
 
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
+
+
+  }
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
 
 
   }
@@ -104,6 +111,12 @@ public class ContactHelper extends ContactHelperBase {
    returnsToHomePage();
   }
 
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteContact();
+    returnsToHomePage();
+  }
+
   public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
 
@@ -120,6 +133,18 @@ public class ContactHelper extends ContactHelperBase {
       contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
     return contacts;
+  }
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement element : elements) {
+      String lastname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[2]")).getText();
+      String firstname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[3]")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+    }
+    return contacts;
+
 
 
   }
@@ -140,6 +165,8 @@ public class ContactHelper extends ContactHelperBase {
     click(By.linkText("home"));
 
   }
+
+
 }
 
 
