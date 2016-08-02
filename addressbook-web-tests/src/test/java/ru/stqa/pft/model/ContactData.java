@@ -1,11 +1,13 @@
 package ru.stqa.pft.model;
 
 public class ContactData {
- private  int id;
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String nickname;
+  private int id = Integer.MAX_VALUE;
+  private String firstname;
+  private String middlename;
+  private String lastname;
+
+
+  private String nickname;
   private String group;
 
 
@@ -25,22 +27,6 @@ public class ContactData {
     return lastname != null ? lastname.hashCode() : 0;
   }
 
-  public ContactData(String firstname, String middlename, String lastname, String nickname, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.group = group;}
-
-    public ContactData(int id, String firstname, String middlename, String lastname, String nickname, String group) {
-      this.id = id;
-      this.firstname = firstname;
-      this.middlename = middlename;
-      this.lastname = lastname;
-      this.nickname = nickname;
-      this.group = group;
-  }
 
   public String getFirstname() {
     return firstname;
@@ -64,15 +50,39 @@ public class ContactData {
   }
 
 
-
-
-
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public ContactData withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   public int getId() {
     return id;
+
 
   }
 
