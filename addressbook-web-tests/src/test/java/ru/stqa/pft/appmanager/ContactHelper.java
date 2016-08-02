@@ -40,7 +40,12 @@ public class ContactHelper extends ContactHelperBase {
     type(By.name("nickname"), contactData.getNickname());
 
   }
-
+ public void modifyContact(int index, ContactData contact) {
+    selectContactMofication(index);
+    updateContactForm();
+    submitContactModification();
+    goToHomePage();
+  }
 
   public void deleteContact() {
     if (!wd.findElement(By.name("selected[]")).isSelected()) {
@@ -125,6 +130,11 @@ public class ContactHelper extends ContactHelperBase {
     wd.findElement(By.name("homepage")).sendKeys("www.facebook.com");
     wd.findElement(By.xpath("//div[@id='content']/form[1]/input[22]")).click();
     wd.findElement(By.linkText("home page")).click();
+  }
+
+  public void returnsToHomePage() {
+    click(By.linkText("home"));
+
   }
 }
 
