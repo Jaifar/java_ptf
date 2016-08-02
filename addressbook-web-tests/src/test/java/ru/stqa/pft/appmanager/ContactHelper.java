@@ -40,7 +40,7 @@ public class ContactHelper extends ContactHelperBase {
     type(By.name("nickname"), contactData.getNickname());
 
   }
- public void modifyContact(int index, ContactData contact) {
+ public void modify(int index, ContactData contact) {
     selectContactMofication(index);
     updateContactForm();
     submitContactModification();
@@ -93,14 +93,18 @@ public class ContactHelper extends ContactHelperBase {
   }
 
 
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     fillOutContactForm(contact);
     submitContactForm();
     goToHomePage();
   }
+  public void delete(int index) {
+  selectContact(index);
+   deleteContact();
+   returnsToHomePage();
+  }
 
-
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
 
     List<WebElement> elements = wd.findElements(By.name("entry"));

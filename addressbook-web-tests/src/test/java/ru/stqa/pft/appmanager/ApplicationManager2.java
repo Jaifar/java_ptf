@@ -43,11 +43,11 @@ public class ApplicationManager2
     wd.quit();
   }
 
-  public ContactHelper getContactHelper() {
+  public ContactHelper contact() {
     return contactHelper;
   }
 
-  public NavigationHelperContact getNavigationHelperContact() {
+  public NavigationHelperContact goTo() {
     return navigationHelperContact;
   }
 }

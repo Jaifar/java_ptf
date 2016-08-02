@@ -16,7 +16,7 @@ public class NavigationHelperContact extends ContactHelperBase{
 
 
 
-  public void returnsToHomePage() {
+  public void homePage() {
    if (isElementPresent(By.id("maintable"))){
       return;
     }
