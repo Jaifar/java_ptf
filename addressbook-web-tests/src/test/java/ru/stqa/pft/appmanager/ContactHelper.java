@@ -119,29 +119,38 @@ public class ContactHelper extends ContactHelperBase {
 
   public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+   for (WebElement row : rows) {
+      List <WebElement> cells = row.findElements(By.tagName("td"));
 
-    List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element : elements) {
+     String lastname = cells.get(1).getText();
 
-      String lastname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[2]")).getText();
+     String firstname = cells.get(2).getText();
+     String address = cells.get(3).getText();
+     String AllEmails = cells.get(4).getText();
+     String Allphones = cells.get(5).getText();
 
-      String firstname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[3]")).getText();
-
-
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-
-      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
-    }
+     int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+     contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname).withAlladdress(address)
+               .withAllemails(AllEmails).withPhones(Allphones));
+   }
     return contacts;
   }
   public Set<ContactData> all() {
-    Set<ContactData> contacts = new HashSet<ContactData>();
-    List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element : elements) {
-      String lastname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[2]")).getText();
-      String firstname = element.findElement(By.xpath("//table[@id='maintable']/tbody/tr[29]/td[3]")).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+   Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> rows = wd.findElements(By.name("entry"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      String lastname = cells.get(1).getText();
+
+      String firstname = cells.get(2).getText();
+      String address = cells.get(3).getText();
+      String AllEmails = cells.get(4).getText();
+      String Allphones = cells.get(5).getText();
+
+      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname).withAlladdress(address)
+              .withAllemails(AllEmails).withPhones(Allphones));
     }
     return contacts;
 
