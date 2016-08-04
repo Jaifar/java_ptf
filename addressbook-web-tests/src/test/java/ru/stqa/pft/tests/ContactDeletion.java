@@ -21,12 +21,12 @@ public class ContactDeletion extends TestBase2 {
   @Test
   public void testContactDeletion() {
     Set<ContactData> before = app.contact().all();
-    ContactData deleteContact = before.iterator().next();
-    app.contact().delete(deleteContact);
+    ContactData deletedContact = before.iterator().next();
+
+    app.contact().delete(deletedContact);
     Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() - 1);
-
-    before.remove(deleteContact);
+    before.remove(deletedContact);
     Assert.assertEquals(before, after);
     }
 

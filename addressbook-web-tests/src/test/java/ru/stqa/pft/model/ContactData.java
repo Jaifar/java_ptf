@@ -1,10 +1,14 @@
 package ru.stqa.pft.model;
 
 public class ContactData {
+
   private int id = Integer.MAX_VALUE;
   private String firstname;
   private String middlename;
   private String lastname;
+  public String address;
+  public String Allphones;
+  public String Allemails;
 
 
   private String nickname;
@@ -52,7 +56,35 @@ public class ContactData {
     this.lastname = lastname;
     return this;
   }
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
 
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
+
+  public int getId() {
+    return id;
+
+
+  }
+  public ContactData withAlladdress(String Alladdress) {
+    this.address = Alladdress;
+    return this;
+
+  }
+  public ContactData withPhones(String Allphones) {
+    this.Allphones = Allphones;
+    return this;
+
+  }
+  public ContactData withAllemails(String Allemails) {
+    this.Allemails = Allemails;
+    return this;
+  }
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -74,21 +106,7 @@ public class ContactData {
     return result;
   }
 
-  public ContactData withNickname(String nickname) {
-    this.nickname = nickname;
-    return this;
-  }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
-
-  public int getId() {
-    return id;
-
-
-  }
 
   @Override
   public String toString() {
@@ -101,5 +119,8 @@ public class ContactData {
             ", group='" + group + '\'' +
             '}';
   }
+
+
+
 }
 
