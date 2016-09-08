@@ -50,9 +50,7 @@ public class ContactHelper extends ContactHelperBase {
   }
 
   public void deleteContact() {
-    if (!wd.findElement(By.name("selected[]")).isSelected()) {
-      wd.findElement(By.name("selected[]")).click();
-    }
+
     wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
     wd.switchTo().alert().accept();
 
@@ -65,6 +63,10 @@ public class ContactHelper extends ContactHelperBase {
   }
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+    
+
+
 
 
   }
