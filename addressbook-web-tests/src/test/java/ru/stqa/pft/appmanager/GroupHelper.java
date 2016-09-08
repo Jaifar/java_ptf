@@ -51,6 +51,7 @@ public class GroupHelper extends HelperBase {
     wd.findElement(By.name("group_footer")).clear();
     wd.findElement(By.name("group_footer")).sendKeys("2222");
     click(By.name("submit"));
+    groupCache = null;
 
 
   }
@@ -114,6 +115,10 @@ public class GroupHelper extends HelperBase {
 
 
   public void create(GroupData group) {
+    fillGroupForm(group);
+    submitGroupCreation();
+    groupCache = null;
+    returntoGroupPage();
   }
 
 
@@ -122,6 +127,7 @@ public class GroupHelper extends HelperBase {
     initGroupModification();
     fillGroupForm(group);
     submitGroupModification();
+    groupCache = null;
     returntoGroupPage();
   }
 
@@ -136,6 +142,7 @@ public class GroupHelper extends HelperBase {
   public void delete(GroupData group) {
     selectGroupById(group.getId());
     deleteSelectedGroup();
+    groupCache = null;
     returntoGroupPage();
   }
 
@@ -146,6 +153,23 @@ public class GroupHelper extends HelperBase {
 
   public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+  public Groups groupCache = null;
+
+  public Groups all() {
+    if(groupCache != null){
+      return new Groups(groupCache);
+    }
+
+
+    groupCache = new Groups();
+    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+    for (WebElement element : elements) {
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      groupCache.add(new GroupData().withId(id).withName(name));
+    }
+    return groupCache;
   }
 
   public List<GroupData> list() {
@@ -159,16 +183,7 @@ public class GroupHelper extends HelperBase {
     return groups;
   }
 
-  public Groups all() {
-    Groups groups = new Groups();
-    List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-    for (WebElement element : elements) {
-      String name = element.getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      groups.add(new GroupData().withId(id).withName(name));
-    }
-    return groups;
-  }
+
 
 
 
