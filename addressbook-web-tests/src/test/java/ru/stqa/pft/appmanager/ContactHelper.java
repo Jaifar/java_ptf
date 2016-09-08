@@ -42,8 +42,9 @@ public class ContactHelper extends ContactHelperBase {
     type(By.name("nickname"), contactData.getNickname());
 
   }
- public void modify(ContactData contact) {
-   selectContactById(contact.getId());
+
+  public void modify(ContactData contact) {
+    selectContactById(contact.getId());
     initContactModification((contact.getId()));
 
     updateContactForm();
@@ -63,18 +64,38 @@ public class ContactHelper extends ContactHelperBase {
 
 
   }
+
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
 
 
+  }
 
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    initContactModification(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
 
+  }
 
+  private void initContactModificationById(int id) {
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
   }
 
   public void initContactModification(int id) {
 
-    wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();}
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
+  }
 
   public void submitContactModification() {
     click(By.name("update"));
@@ -113,10 +134,11 @@ public class ContactHelper extends ContactHelperBase {
     submitContactForm();
     goToHomePage();
   }
+
   public void delete(int index) {
-  selectContact(index);
-   deleteContact();
-   returnsToHomePage();
+    selectContact(index);
+    deleteContact();
+    returnsToHomePage();
   }
 
   public void delete(ContactData contact) {
@@ -128,24 +150,25 @@ public class ContactHelper extends ContactHelperBase {
   public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> rows = wd.findElements(By.name("entry"));
-   for (WebElement row : rows) {
-      List <WebElement> cells = row.findElements(By.tagName("td"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
 
-     String lastname = cells.get(1).getText();
+      String lastname = cells.get(1).getText();
 
-     String firstname = cells.get(2).getText();
-     String address = cells.get(3).getText();
-     String AllEmails = cells.get(4).getText();
-     String Allphones = cells.get(5).getText();
+      String firstname = cells.get(2).getText();
+      String address = cells.get(3).getText();
+      String AllEmails = cells.get(4).getText();
+      String Allphones = cells.get(5).getText();
 
-     int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
-     contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname).withAlladdress(address)
-               .withAllemails(AllEmails).withPhones(Allphones));
-   }
+      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname).withAlladdress(address)
+              .withAllemails(AllEmails).withPhones(Allphones));
+    }
     return contacts;
   }
+
   public Set<ContactData> all() {
-   Set<ContactData> contacts = new HashSet<ContactData>();
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> rows = wd.findElements(By.name("entry"));
     for (WebElement row : rows) {
       List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -163,8 +186,8 @@ public class ContactHelper extends ContactHelperBase {
     return contacts;
 
 
-
   }
+
   protected void fillOutContactForm() {
     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[4]/td[8]/a/img")).click();
     wd.findElement(By.name("nickname")).click();
