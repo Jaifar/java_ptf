@@ -151,10 +151,10 @@ public class GroupHelper extends HelperBase {
     return isElementPresent(By.name("Selected[]"));
   }
 
-  public int getGroupCount() {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
-  public Groups groupCache = null;
+  private Groups groupCache = null;
 
   public Groups all() {
     if(groupCache != null){
@@ -169,7 +169,7 @@ public class GroupHelper extends HelperBase {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       groupCache.add(new GroupData().withId(id).withName(name));
     }
-    return groupCache;
+    return new Groups(groupCache);
   }
 
   public List<GroupData> list() {
