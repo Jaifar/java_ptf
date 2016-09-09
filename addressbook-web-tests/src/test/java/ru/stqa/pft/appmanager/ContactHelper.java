@@ -72,6 +72,7 @@ public class ContactHelper extends ContactHelperBase {
   }
 
   public ContactData infoFromEditForm(ContactData contact) {
+
     initContactModificationById(contact.getId());
     initContactModification(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
@@ -172,16 +173,20 @@ public class ContactHelper extends ContactHelperBase {
     List<WebElement> rows = wd.findElements(By.name("entry"));
     for (WebElement row : rows) {
       List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
       String lastname = cells.get(1).getText();
 
       String firstname = cells.get(2).getText();
       String address = cells.get(3).getText();
       String AllEmails = cells.get(4).getText();
-      String Allphones = cells.get(5).getText();
 
-      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname).withAlladdress(address)
-              .withAllemails(AllEmails).withPhones(Allphones));
+      String[] phones = cells.get(5).getText().split("\n");
+
+
+      contacts.add(new ContactData().withId(id).withLastname(lastname)
+              .withFirstname(firstname).withAlladdress(address)
+              .withAllemails(AllEmails)
+              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
     }
     return contacts;
 
