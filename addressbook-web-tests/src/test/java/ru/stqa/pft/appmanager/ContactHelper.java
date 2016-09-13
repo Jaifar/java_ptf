@@ -3,10 +3,7 @@ package ru.stqa.pft.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 import ru.stqa.pft.model.ContactData;
-import ru.stqa.pft.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -71,7 +68,7 @@ public class ContactHelper extends ContactHelperBase {
 
   }
 
-  public ContactData infoFromEditForm(ContactData contact) {
+  public ContactData infoFromEditForm(String contact) {
 
     initContactModificationById(contact.getId());
 
@@ -171,21 +168,21 @@ public class ContactHelper extends ContactHelperBase {
     return contacts;
   }
 
-  public Set<ContactData> all() {
-    Set<ContactData> contacts = new HashSet<ContactData>();
+  public Set<String> all() {
+    Set<String> contacts = new HashSet<>();
     List<WebElement> rows = wd.findElements(By.name("entry"));
     for (WebElement row : rows) {
       List<WebElement> cells = row.findElements(By.tagName("td"));
       int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
-      String[] phones =  cells.get(5).getText().split("\n");
+
+      String allPhones = cells.get(5).getText();
 
 
 
 
-      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname)
-              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]));
+      contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname).withAllPhones(allPhones));
     }
     return contacts;
 

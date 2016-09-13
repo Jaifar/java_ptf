@@ -2,15 +2,37 @@ package ru.stqa.pft.model;
 
 public class ContactData {
 
-  private int id = Integer.MAX_VALUE;
+  private int id;
   private String firstname;
   private String middlename;
   private String lastname;
-  public String address;
-  public String Allphones;
+  private String address;
+  private String mobilePhones;
+  private String workPhone;
+  private String allPhones;
+
+  private String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public void setWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+  }
+
   public String Allemails;
-
-
   private String nickname;
   private String group;
   private String homephone;
@@ -76,10 +98,7 @@ public class ContactData {
     this.mobilephone = mobilephone;
     return this;
   }
-  public ContactData withWorkPhone (String workphone){
-    this.workphone = workphone;
-    return this;
-  }
+
   public ContactData withGroup(String group) {
     this.group = group;
     return this;
@@ -94,10 +113,6 @@ public class ContactData {
     this.address = Alladdress;
     return this;
 
-  }
-  public ContactData withPhones(String Allphones) {
-    this.Allphones = Allphones;
-    return this;
 
   }
   public ContactData withAllemails(String Allemails) {
