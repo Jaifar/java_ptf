@@ -3,15 +3,15 @@ package ru.stqa.pft.model;
 public class ContactData {
 
   private int id;
-  private String firstname;
-  private String middlename;
-  private String lastname;
-  private String address;
-  private String mobilePhones;
-  private String workPhone;
-  private String allPhones;
+  public String firstname;
+  public String middlename;
+  public String lastname;
+  public String address;
+  public String mobilePhones;
+  public String workPhone;
+  public String allPhones;
 
-  private String getAllPhones() {
+  public String getAllPhones() {
     return allPhones;
   }
 
@@ -28,16 +28,17 @@ public class ContactData {
     return workPhone;
   }
 
-  public ContactData withWorkPhone(String workPhone) {
-    this.workPhone = workPhone;
+  public void withWorkPhone(String workPhone) {
+    switch (this.workPhone = workPhone) {
+    }
   }
 
   public String Allemails;
-  private String nickname;
-  private String group;
-  private String homephone;
-  private String mobilephone;
-  private String workphone;
+  public String nickname;
+  public String group;
+  public String homephone;
+  public String mobilephone;
+  public String workphone;
 
 
   public String getFirstname() {
