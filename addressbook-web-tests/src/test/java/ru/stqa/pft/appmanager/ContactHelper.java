@@ -68,7 +68,7 @@ public class ContactHelper extends ContactHelperBase {
 
   }
 
-  public ContactData infoFromEditForm(String contact) {
+  public ContactData infoFromEditForm(ContactData contact) {
 
     initContactModificationById(contact.getId());
 
@@ -168,8 +168,8 @@ public class ContactHelper extends ContactHelperBase {
     return contacts;
   }
 
-  public Set<String> all() {
-    Set<String> contacts = new HashSet<>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> rows = wd.findElements(By.name("entry"));
     for (WebElement row : rows) {
       List<WebElement> cells = row.findElements(By.tagName("td"));
