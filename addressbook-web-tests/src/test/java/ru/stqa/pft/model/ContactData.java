@@ -20,18 +20,17 @@ public class ContactData {
     return this;
   }
 
-  public void setWorkPhone(String workPhone) {
+  public  ContactData withWorkPhone(String workPhone) {
     this.workPhone = workPhone;
+    return this;
   }
 
   public String getWorkPhone() {
     return workPhone;
   }
 
-  public void withWorkPhone(String workPhone) {
-    switch (this.workPhone = workPhone) {
-    }
-  }
+
+
 
   public String Allemails;
   public String nickname;

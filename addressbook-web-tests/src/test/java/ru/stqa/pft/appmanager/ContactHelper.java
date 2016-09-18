@@ -163,7 +163,7 @@ public class ContactHelper extends ContactHelperBase {
 
       int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
       contacts.add(new ContactData().withId(id).withLastname(lastname).withFirstname(firstname).withAlladdress(address)
-              .withAllemails(AllEmails).withPhones(Allphones));
+              .withAllemails(AllEmails).withAllPhones(Allphones));
     }
     return contacts;
   }
