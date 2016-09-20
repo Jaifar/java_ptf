@@ -22,15 +22,17 @@ public class ContactPhoneTests extends TestBase2 {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)))
+    ;
 
   }
 
   private String mergePhones(ContactData contact) {
     return Arrays.asList(contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone())
-            .stream().filter((s) ->!s.equals(""))
+            .filter((s) -> ! (s == null || s.equals("")))
             .map(ContactPhoneTests::cleaned)
-            .collect(Collectors.joining("\n"));
+            .collect(Collectors.joining("\n")
+            );
 
 
   }
