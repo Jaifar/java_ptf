@@ -28,8 +28,8 @@ public class ContactPhoneTests extends TestBase2 {
   }
 
   private String mergePhones(ContactData contact) {
-    return Arrays.asList(contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone())
-            .filter((s) -> ! (s == null || s.equals("")))
+
+    return Arrays.asList(contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone()).stream().filter((s) -> ! (s == null || s.equals("")))
             .map(ContactPhoneTests::cleaned)
             .collect(Collectors.joining("\n")
             );
