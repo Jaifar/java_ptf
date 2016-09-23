@@ -22,10 +22,19 @@ public class ContactPhoneTests extends TestBase2 {
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)))
-    ;
+    assertThat(contact.getAllemails(), equals(mergeEmails(contactInfoFromEditForm)));
+
+
+    assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
 
   }
+
+  private String mergeEmails(ContactData contact) {
+    return Arrays.asList(contact.getEmailOne(), contact.getEmailTwo(), contact.getEmailThree())
+            .stream().filter((s) -> ! s.equals(""))
+            
+            .collect(Collectors.joining("\n"));
+   }
 
   private String mergePhones(ContactData contact) {
 

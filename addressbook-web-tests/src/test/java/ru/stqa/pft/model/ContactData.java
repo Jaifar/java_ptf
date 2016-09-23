@@ -11,8 +11,29 @@ public class ContactData {
   public String workPhone;
   public String allPhones;
 
-  public String getAllPhones() {
+
+
+  public String allEmails;
+  public String emailOne;
+  public String emailTwo;
+  public String emailThree;
+  public String withAdress;
+  public String withEmailOne;
+  public String withEmailTwo;
+  public String  withEmailThree;
+
+
+  public String getAllemails()
+ {
+   return allEmails;
+ }
+  public String getAllPhones()
+  {
     return allPhones;
+  }
+  public ContactData withAllEmails(String allemails) {
+    this.allEmails = allEmails;
+    return this;
   }
 
   public ContactData withAllPhones(String allPhones) {
@@ -43,7 +64,9 @@ public class ContactData {
   public String getFirstname() {
     return firstname;
   }
-
+  public String getEmailTwo() {
+    return emailTwo;
+  }
   public String getMiddlename() {
     return middlename;
   }
@@ -55,7 +78,9 @@ public class ContactData {
   public String getNickname() {
     return nickname;
   }
-
+  public String getEmailThree() {
+    return emailThree;
+  }
 
   public String getGroup() {
     return group;
@@ -63,7 +88,9 @@ public class ContactData {
   public String getHomephone() {return homephone;}
   public String getMobilephone(){ return mobilephone;}
   public String getWorkphone(){ return workphone;}
-
+  public String getEmailOne() {
+    return emailOne;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -74,6 +101,24 @@ public class ContactData {
     this.firstname = firstname;
     return this;
   }
+  public ContactData withEmailOne(String email) {
+    this.withEmailOne = emailOne;
+    return this;
+
+  }
+  public ContactData withEmailTwo(String email) {
+    this.withEmailTwo = emailTwo;
+    return this;
+  }
+  public ContactData withEmailThree(String email) {
+
+    this.withEmailThree = emailThree;
+    return this;
+
+  }
+  public ContactData withAddress(String address) {
+    this.withAdress = address;
+  return this;}
 
   public ContactData withMiddlename(String middlename) {
     this.middlename = middlename;
@@ -157,4 +202,8 @@ public class ContactData {
 
 
 }
+
+
+
+
 
