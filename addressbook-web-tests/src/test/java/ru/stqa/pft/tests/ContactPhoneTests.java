@@ -31,14 +31,16 @@ public class ContactPhoneTests extends TestBase2 {
 
   private String mergeEmails(ContactData contact) {
     return Arrays.asList(contact.getEmailOne(), contact.getEmailTwo(), contact.getEmailThree())
-            .stream().filter((s) -> ! s.equals(""))
-            
+            .stream().filter((s) -> ! (s == null || s.equals("")))
+
+
             .collect(Collectors.joining("\n"));
    }
 
   private String mergePhones(ContactData contact) {
 
-    return Arrays.asList(contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone()).stream().filter((s) -> ! (s == null || s.equals("")))
+    return Arrays.asList(contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone())
+            .stream().filter((s) -> ! (s == null || s.equals("")))
             .map(ContactPhoneTests::cleaned)
             .collect(Collectors.joining("\n")
             );
