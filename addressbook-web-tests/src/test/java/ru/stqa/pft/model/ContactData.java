@@ -10,31 +10,30 @@ public class ContactData {
   public String mobilePhones;
   public String workPhone;
   public String allPhones;
-
-
-
-  public String allEmails;
   public String emailOne;
   public String emailTwo;
   public String emailThree;
   public String withAdress;
   public String withEmailOne;
   public String withEmailTwo;
-  public String  withEmailThree;
+  public String withEmailThree;
+  public String allEmails;
+  public String nickname;
+  public String group;
+  public String homephone;
+  public String mobilephone;
+  public String workphone;
+
 
 
   public String getAllemails()
  {
    return allEmails;
  }
-  public String getAllPhones()
-  {
-    return allPhones;
+  public String getAllPhones(){
+      return allPhones;
   }
-  public ContactData withAllEmails(String allemails) {
-    this.allEmails = allEmails;
-    return this;
-  }
+
 
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
@@ -53,12 +52,6 @@ public class ContactData {
 
 
 
-  public String Allemails;
-  public String nickname;
-  public String group;
-  public String homephone;
-  public String mobilephone;
-  public String workphone;
 
 
   public String getFirstname() {
@@ -161,7 +154,7 @@ public class ContactData {
 
   }
   public ContactData withAllemails(String Allemails) {
-    this.Allemails = Allemails;
+    this.allEmails = Allemails;
     return this;
   }
   @Override
