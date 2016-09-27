@@ -10,6 +10,7 @@ public class ContactData {
   public String mobilePhones;
   public String workPhone;
   public String allPhones;
+  public String allAdress;
   public String emailOne;
   public String emailTwo;
   public String emailThree;
@@ -147,14 +148,14 @@ public class ContactData {
 
 
   }
-  public ContactData withAlladdress(String Alladdress) {
-    this.address = Alladdress;
+  public ContactData withAlladdress(String allAdress) {
+    this.address = allAdress;
     return this;
 
 
   }
-  public ContactData withAllemails(String Allemails) {
-    this.allEmails = Allemails;
+  public ContactData withAllemails(String allEmails) {
+    this.allEmails = allEmails;
     return this;
   }
   @Override
