@@ -95,16 +95,16 @@ public class ContactData {
     this.firstname = firstname;
     return this;
   }
-  public ContactData withEmailOne(String email) {
+  public ContactData withEmailOne(String emailOne) {
     this.withEmailOne = emailOne;
     return this;
 
   }
-  public ContactData withEmailTwo(String email) {
+  public ContactData withEmailTwo(String emailTwo) {
     this.withEmailTwo = emailTwo;
     return this;
   }
-  public ContactData withEmailThree(String email) {
+  public ContactData withEmailThree(String  emailThree) {
 
     this.withEmailThree = emailThree;
     return this;

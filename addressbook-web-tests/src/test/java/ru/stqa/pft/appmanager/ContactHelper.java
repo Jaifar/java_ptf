@@ -78,9 +78,9 @@ public class ContactHelper extends ContactHelperBase {
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
-    String emailOne = wd.findElement(By.name("Emai-l")).getAttribute("value");
-    String emailTwo = wd.findElement(By.name ("Email-2")).getAttribute("value");
-    String emailThree = wd.findElement(By.name("Email-3")).getAttribute("value");
+    String emailOne = wd.findElement(By.name("email")).getAttribute("value");
+    String emailTwo = wd.findElement(By.name ("email2")).getAttribute("value");
+    String emailThree = wd.findElement(By.name("email3")).getAttribute("value");
 
 
     wd.navigate().back();
