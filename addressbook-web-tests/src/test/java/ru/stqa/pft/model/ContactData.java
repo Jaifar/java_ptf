@@ -16,7 +16,7 @@ public class ContactData {
   public String email3;
   public String emailTwo;
   public String emailThree;
-  public String withAdress;
+  public String withAddress;
   public String withEmailOne;
   public String withEmailTwo;
   public String withEmailThree;
@@ -99,23 +99,23 @@ public class ContactData {
   }
 
 
-  public ContactData withEmailOne(String email) {
+  public ContactData withEmail(String email) {
     this.email = email;
     return this;
 
   }
-  public ContactData withEmailTwo(String email2) {
+  public ContactData withEmail2(String email2) {
     this.email2 = email2;
     return this;
   }
-  public ContactData withEmailThree(String  email3) {
+  public ContactData withEmail3(String  email3) {
 
     this.email3 = email3;
     return this;
 
   }
   public ContactData withAddress(String address) {
-    this.withAdress = address;
+    this.withAddress = address;
   return this;}
 
   public ContactData withMiddlename(String middlename) {
@@ -131,7 +131,7 @@ public class ContactData {
     this.nickname = nickname;
     return this;
   }
- public ContactData withHomePhone(String homephone){
+ public ContactData withHomePhone( String homephone){
    this.homephone = homephone;
    return  this;
 
