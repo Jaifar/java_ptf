@@ -7,33 +7,23 @@ public class ContactData {
   public String middlename;
   public String lastname;
   public String address;
-  public String mobilePhones;
   public String workPhone;
-  public String allPhones;
-  public String allAdress;
-  public String email;
-  public String email2;
-  public String email3;
-  public String emailTwo;
-  public String emailThree;
-  public String withAddress;
-  public String withEmailOne;
-  public String withEmailTwo;
-  public String withEmailThree;
-  public String allEmails;
-  public String nickname;
-  public String group;
   public String homephone;
   public String mobilephone;
   public String workphone;
+  public String allPhones;
+  public String email;
+  public String email2;
+  public String email3;
+  public String withAddress;
+  public String allEmails;
+  public String nickname;
+  public String group;
+  public String phones;
 
-
-
-  public String getAllemails()
- {
-   return allEmails;
- }
-  public String getAllPhones(){return allPhones;}
+ public String details;
+  public String AllEmails;
+  private String contactDetails;
 
 
   public ContactData withAllPhones(String allPhones) {
@@ -43,49 +33,41 @@ public class ContactData {
 
   public  ContactData withWorkPhone(String workPhone) {
     this.workPhone = workPhone;
-    return this;
-  }
-
-  public String getWorkPhone() {
-    return workPhone;
-  }
-
-
-
-
-
+    return this;}
 
   public String getFirstname() {
     return firstname;
   }
-
-
-  public String getEmailTwo() {
-    return email2;
-  }
+  public String getEmailTwo() {return email2;}
   public String getMiddlename() {
     return middlename;
   }
-
   public String getLastname() {
     return lastname;
   }
-
   public String getNickname() {
     return nickname;
   }
   public String getEmailThree() {
     return email3;
   }
-
   public String getGroup() {
     return group;
   }
   public String getHomephone() {return homephone;}
   public String getMobilephone(){ return mobilephone;}
   public String getWorkphone(){ return workphone;}
-  public String getEmailOne() {
-    return email;
+  public String getEmailOne() {return email;}
+  public String getAllAddress() {return address;}
+  public String getAllPhones(){return phones;}
+  public String getAddress() {return address;}
+  public String getDetails() {return details;}
+  public String getAllemails()
+  {
+    return allEmails;
+  }
+
+  public String getContactDetails() {return contactDetails;
   }
 
   public ContactData withId(int id) {
@@ -133,10 +115,13 @@ public class ContactData {
   }
  public ContactData withHomePhone( String homephone){
    this.homephone = homephone;
-   return  this;
+   return  this;}
+   public ContactData withContactDetails(String contactDetails) {
+     this.contactDetails = contactDetails;
+     return this;
+   }
 
 
- }
   public ContactData withMobilePhone (String mobilephone){
     this.mobilephone = mobilephone;
     return this;
@@ -152,12 +137,12 @@ public class ContactData {
 
 
   }
-  public ContactData withAlladdress(String allAdress) {
-    this.address = allAdress;
-    return this;
+    public ContactData withDetails(String details) {
+      this.details = details;
+      return this;
+    }
 
 
-  }
   public ContactData withAllemails(String allEmails) {
     this.allEmails = allEmails;
     return this;
@@ -171,7 +156,20 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if ( middlename != null ? ! middlename.equals(that.middlename) : that. middlename != null) return false;
+    if (workPhone != null ? !workPhone.equals(that.workPhone) : that. workPhone != null) return false;
+    if (allPhones != null ? !allPhones.equals(that.allPhones) : that.allPhones != null) return false;
+    if ( email != null ? ! email.equals(that.email) : that.email != null) return false;
+    if ( email2 != null ? ! email2.equals(that.email2) : that.email2 != null) return false;
+    if ( email3 != null ? ! email3.equals(that.email3) : that.email3 != null) return false;
+    if ( allEmails != null ? ! allEmails.equals(that. allEmails) : that. allEmails != null) return false;
+    if ( address != null ? !  address.equals(that. address) : that. address != null) return false;
+    if ( nickname != null ? ! nickname.equals(that.nickname) : that.nickname != null) return false;
+
+
+
+    return details != null ? details.equals(that.details) : that.details == null;
 
   }
 

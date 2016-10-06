@@ -67,9 +67,16 @@ public class ContactHelper extends ContactHelperBase {
 
 
   }
+  private void openDetailsPage(int id) {
+
+
+       wd.findElement(By.xpath(".//*[@id='" + id + "']/ ../../td[7]/a")).click();
+
+
+  }
 
   public ContactData infoFromEditForm(ContactData contact) {
-
+    goToHomePage();
     initContactModificationById(contact.getId());
 
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
@@ -81,6 +88,7 @@ public class ContactHelper extends ContactHelperBase {
     String email = wd.findElement(By.name("email")).getAttribute("value");
     String email2 = wd.findElement(By.name ("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+    goToHomePage();
 
 
     wd.navigate().back();
@@ -95,14 +103,26 @@ public class ContactHelper extends ContactHelperBase {
             .withEmail3(email3);
 
   }
+  public ContactData infoFromDetailsForm(ContactData contact) {
+    goToDetailsForm(contact.getId());
+    String contactDetails = wd.findElement(By.xpath(".//*[@id='content']")).getText();
+     goToHomePage();
+     return new ContactData().withId(contact.getId()).withContactDetails(contactDetails);
+  }
+
+  private void goToDetailsForm(int id) {
+    click(By.xpath("//input[@id = '" + id + "']/../following-sibling::td[6]/a"));
+
+  }
 
   private void initContactModificationById(int id) {
-    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
-    WebElement row = checkbox.findElement(By.xpath("./../.."));
-    List<WebElement> cells = row.findElements(By.tagName("td"));
-    cells.get(7).findElement(By.tagName("a")).click();
 
-   // wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+   // WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+   // WebElement row = checkbox.findElement(By.xpath("./../.."));
+   // List<WebElement> cells = row.findElements(By.tagName("td"));
+    //cells.get(7).findElement(By.tagName("a")).click();
+
+   wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
   }
 
   public void initContactModification(int id) {
