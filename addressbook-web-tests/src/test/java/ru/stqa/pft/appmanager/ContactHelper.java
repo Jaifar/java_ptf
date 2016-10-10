@@ -22,8 +22,8 @@ public class ContactHelper extends ContactHelperBase {
   }
 
   public void goToHomePage() {
-    click(By.linkText("home page"));
-  }
+    wd.findElement(By.linkText("home")).click();
+}
 
   public void submitContactForm() {
     click(By.name("submit"));
@@ -88,7 +88,7 @@ public class ContactHelper extends ContactHelperBase {
     String email = wd.findElement(By.name("email")).getAttribute("value");
     String email2 = wd.findElement(By.name ("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
-    goToHomePage();
+
 
 
     wd.navigate().back();

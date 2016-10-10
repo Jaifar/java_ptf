@@ -24,14 +24,32 @@ public class DetailsTests extends TestBase2 {
 
   assertThat((mergeDetails(contactInfoFromEditForm)),
           equalTo(contactInfoFromDetailsForm.getContactDetails()));
+ // assertThat(contact.getAllemails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+ // assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
+
  }
 
  private String mergeDetails(ContactData contact) {
-  return Arrays.asList(contact.getFirstname(), contact.getLastname(), contact.getAddress(), contact.getAllPhones(),
+  return Arrays.asList(contact.getFirstname(), contact.getLastname(), contact.getAddress(),contact.getAllPhones(),
           contact.getAllemails())
           .stream().filter((s) -> !(s == null || s.equals("")))
           .collect(Collectors.joining("\n"));
  }
+ //private String mergeEmails( ContactData contact) {
+  //return Arrays.asList(contact.getEmailOne(), contact.getEmailTwo(), contact.getEmailThree())
 
-}
+
+          //  .stream().filter((s) -> !s.equals(""))
+         // .collect(Collectors.joining("\n"));
+
+// }
+// private String mergePhones ( ContactData contact){
+ // return Arrays.asList(contact.getMobilephone(), contact.getHomephone(), contact.getWorkphone())
+
+
+          //    .stream().filter((s) -> !s.equals(""))
+          //    .collect(Collectors.joining("\n"));
+
+ }
+//}
 
