@@ -30,10 +30,17 @@ public class DetailsTests extends TestBase2 {
  }
 
  private String mergeDetails(ContactData contact) {
-  return Arrays.asList(contact.getFirstname(), contact.getLastname(), contact.getAddress(),contact.getAllPhones(),
-          contact.getAllemails())
+  return Arrays.asList(contact.getFirstname()+ " " +  contact.getLastname()+ "\n",
+          contact.getAddress()+ "\n",
+          contact.getHomephone() + "\n",
+          contact.getMobilephone() + "\n",
+          contact.getWorkphone()+ "\n",
+          contact.getEmailOne()+"\n",
+          contact.getEmailTwo()+"\n",
+          contact.getEmailThree())
           .stream().filter((s) -> !(s == null || s.equals("")))
           .collect(Collectors.joining("\n"));
+
  }
  //private String mergeEmails( ContactData contact) {
   //return Arrays.asList(contact.getEmailOne(), contact.getEmailTwo(), contact.getEmailThree())
